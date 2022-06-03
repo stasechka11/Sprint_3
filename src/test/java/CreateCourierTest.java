@@ -18,7 +18,6 @@ public class CreateCourierTest {
     Courier courier;
     CourierClient courierClient;
     CourierCredentials courierCredentials;
-    private final String courierExistMessage = "Этот логин уже используется";
 
     @Before
     public void init() {
@@ -61,6 +60,6 @@ public class CreateCourierTest {
 
         //Check response body
         CreateCourierResponse createCourierResponse = responseCreate.as(CreateCourierResponse.class);
-        assertEquals(courierExistMessage, createCourierResponse.getMessage());
+        assertEquals(CourierClient.courierExistMessage, createCourierResponse.getMessage());
     }
 }

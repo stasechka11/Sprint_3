@@ -17,7 +17,6 @@ import static org.junit.Assert.assertEquals;
 public class CreateCourierParametrisedTest {
     Courier courier;
     CourierClient courierClient;
-    private final String createCourierNotEnoughDataMessage = "Недостаточно данных для создания учетной записи";
 
     @Before
     public void init() {
@@ -47,6 +46,6 @@ public class CreateCourierParametrisedTest {
 
         //Check response body
         CreateCourierResponse createCourierResponse = responseCreate.as(CreateCourierResponse.class);
-        assertEquals(createCourierNotEnoughDataMessage, createCourierResponse.getMessage());
+        assertEquals(CourierClient.createCourierNotEnoughDataMessage, createCourierResponse.getMessage());
     }
 }
