@@ -1,0 +1,53 @@
+package ru.yandex.practicum.scooter.api;
+
+import io.qameta.allure.Step;
+import io.restassured.response.Response;
+import ru.yandex.practicum.scooter.api.model.Courier;
+import ru.yandex.practicum.scooter.api.model.CourierCredentials;
+
+import static io.restassured.RestAssured.given;
+import static org.apache.http.HttpStatus.SC_OK;
+
+public class CourierClient extends BaseApiClient {
+    @Step("Create courier {courier}")
+    public Response createCourier(Courier courier) {
+        return given()
+                .spec(getReqSpec())
+                .body(courier)
+                .when()
+                .post(BASE_URL + "/api/v1/courier/");
+    }
+
+    @Step("Login with created courier {courierCredentials}")
+    public Response login(CourierCredentials courierCredentials) {
+        return given()
+                .spec(getReqSpec())
+                .body(courierCredentials)
+                .when()
+                .post(BASE_URL + "/api/v1/courier/login");
+    }
+
+    @Step("Get courier id")
+    public int getCourierId(CourierCredentials courierCredentials){
+        return given()
+                .spec(getReqSpec())
+                .body(courierCredentials)
+                .when()
+                .post(BASE_URL + "/api/v1/courier/login")
+                .jsonPath().getInt("id");
+    }
+
+    @Step("Delete courier with id - {courierId}")
+    public Boolean deleteCourier(int courierId) {
+        return given()
+                .spec(getReqSpec())
+                .when()
+                .delete(BASE_URL + "/api/v1/courier/" + courierId)
+                .then()
+                .assertThat()
+                .statusCode(SC_OK)
+                .extract()
+                .path("ok");
+    }
+
+}
