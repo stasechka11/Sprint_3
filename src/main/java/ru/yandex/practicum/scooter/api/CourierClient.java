@@ -9,8 +9,11 @@ import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
 
 public class CourierClient extends BaseApiClient {
+    //create courier messages
     public static final String createCourierNotEnoughDataMessage = "Недостаточно данных для создания учетной записи";
     public static final String courierExistMessage = "Этот логин уже используется";
+    //login courier messages
+    public static final String loginCourierNotExistMessage = "Учетная запись не найдена";
 
     @Step("Create courier {courier}")
     public Response createCourier(Courier courier) {
