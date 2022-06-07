@@ -1,7 +1,6 @@
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,6 +45,6 @@ public class CreateCourierParametrisedTest {
 
         //Check response body
         CreateCourierResponse createCourierResponse = responseCreate.as(CreateCourierResponse.class);
-        assertEquals(CourierClient.createCourierNotEnoughDataMessage, createCourierResponse.getMessage());
+        assertEquals(CourierClient.CREATE_COURIER_NOT_ENOUGH_DATA_MESSAGE, createCourierResponse.getMessage());
     }
 }

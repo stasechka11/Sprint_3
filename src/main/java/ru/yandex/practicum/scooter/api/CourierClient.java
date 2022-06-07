@@ -9,12 +9,13 @@ import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
 
 public class CourierClient extends BaseApiClient {
+    public static final String BASE_PATH_COURIER = "/api/v1/courier/";
     //create courier messages
-    public static final String createCourierNotEnoughDataMessage = "Недостаточно данных для создания учетной записи";
-    public static final String courierExistMessage = "Этот логин уже используется";
+    public static final String CREATE_COURIER_NOT_ENOUGH_DATA_MESSAGE = "Недостаточно данных для создания учетной записи";
+    public static final String COURIER_EXIST_MESSAGE = "Этот логин уже используется";
     //login courier messages
-    public static final String loginCourierNotExistMessage = "Учетная запись не найдена";
-    public static final String loginCourierNotEnoughDataMessage = "Недостаточно данных для входа";
+    public static final String LOGIN_COURIER_NOT_EXIST_MESSAGE = "Учетная запись не найдена";
+    public static final String LOGIN_COURIER_NOT_ENOUGH_DATA_MESSAGE = "Недостаточно данных для входа";
 
     @Step("Create courier {courier}")
     public Response createCourier(Courier courier) {
@@ -23,7 +24,7 @@ public class CourierClient extends BaseApiClient {
                 .body(courier)
                 .when()
                 .log().all()
-                .post(BASE_URL + "/api/v1/courier/");
+                .post(BASE_URL + BASE_PATH_COURIER);
     }
 
     @Step("Login with created courier {courierCredentials}")
@@ -33,17 +34,17 @@ public class CourierClient extends BaseApiClient {
                 .body(courierCredentials)
                 .when()
                 .log().all()
-                .post(BASE_URL + "/api/v1/courier/login");
+                .post(BASE_URL + BASE_PATH_COURIER + "login");
     }
 
     @Step("Get courier id")
-    public int getCourierId(CourierCredentials courierCredentials){
+    public int getCourierId(CourierCredentials courierCredentials) {
         return given()
                 .spec(getReqSpec())
                 .body(courierCredentials)
                 .when()
                 .log().all()
-                .post(BASE_URL + "/api/v1/courier/login")
+                .post(BASE_URL + BASE_PATH_COURIER + "login")
                 .jsonPath().getInt("id");
     }
 
@@ -53,7 +54,7 @@ public class CourierClient extends BaseApiClient {
                 .spec(getReqSpec())
                 .when()
                 .log().all()
-                .delete(BASE_URL + "/api/v1/courier/" + courierId)
+                .delete(BASE_URL + BASE_PATH_COURIER + courierId)
                 .then()
                 .assertThat()
                 .statusCode(SC_OK)

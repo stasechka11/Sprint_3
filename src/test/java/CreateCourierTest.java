@@ -60,6 +60,6 @@ public class CreateCourierTest {
 
         //Check response body
         CreateCourierResponse createCourierResponse = responseCreate.as(CreateCourierResponse.class);
-        assertEquals(CourierClient.courierExistMessage, createCourierResponse.getMessage());
+        assertEquals(CourierClient.COURIER_EXIST_MESSAGE, createCourierResponse.getMessage());
     }
 }

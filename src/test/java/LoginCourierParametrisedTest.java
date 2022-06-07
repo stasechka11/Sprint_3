@@ -48,12 +48,12 @@ public class LoginCourierParametrisedTest {
     @Parameterized.Parameters
     public static Object[][] getCredentials() {
         return new Object[][]{
-                {new CourierCredentials(courier.getLogin(), RandomStringUtils.randomAlphabetic(10)), SC_NOT_FOUND, CourierClient.loginCourierNotExistMessage},
-                {new CourierCredentials(RandomStringUtils.randomAlphabetic(10), courier.getPassword()), SC_NOT_FOUND, CourierClient.loginCourierNotExistMessage},
-                {new CourierCredentials(RandomStringUtils.randomAlphabetic(10), RandomStringUtils.randomAlphabetic(10)), SC_NOT_FOUND, CourierClient.loginCourierNotExistMessage},
-                {new CourierCredentials(courier.getLogin(), ""), SC_BAD_REQUEST, CourierClient.loginCourierNotEnoughDataMessage},
-                {new CourierCredentials("", courier.getPassword()), SC_BAD_REQUEST, CourierClient.loginCourierNotEnoughDataMessage},
-                {new CourierCredentials("", ""), SC_BAD_REQUEST, CourierClient.loginCourierNotEnoughDataMessage}
+                {new CourierCredentials(courier.getLogin(), RandomStringUtils.randomAlphabetic(10)), SC_NOT_FOUND, CourierClient.LOGIN_COURIER_NOT_EXIST_MESSAGE},
+                {new CourierCredentials(RandomStringUtils.randomAlphabetic(10), courier.getPassword()), SC_NOT_FOUND, CourierClient.LOGIN_COURIER_NOT_EXIST_MESSAGE},
+                {new CourierCredentials(RandomStringUtils.randomAlphabetic(10), RandomStringUtils.randomAlphabetic(10)), SC_NOT_FOUND, CourierClient.LOGIN_COURIER_NOT_EXIST_MESSAGE},
+                {new CourierCredentials(courier.getLogin(), ""), SC_BAD_REQUEST, CourierClient.LOGIN_COURIER_NOT_ENOUGH_DATA_MESSAGE},
+                {new CourierCredentials("", courier.getPassword()), SC_BAD_REQUEST, CourierClient.LOGIN_COURIER_NOT_ENOUGH_DATA_MESSAGE},
+                {new CourierCredentials("", ""), SC_BAD_REQUEST, CourierClient.LOGIN_COURIER_NOT_ENOUGH_DATA_MESSAGE}
         };
     }
 
