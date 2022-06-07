@@ -14,6 +14,7 @@ public class CourierClient extends BaseApiClient {
     public static final String courierExistMessage = "Этот логин уже используется";
     //login courier messages
     public static final String loginCourierNotExistMessage = "Учетная запись не найдена";
+    public static final String loginCourierNotEnoughDataMessage = "Недостаточно данных для входа";
 
     @Step("Create courier {courier}")
     public Response createCourier(Courier courier) {
@@ -21,6 +22,7 @@ public class CourierClient extends BaseApiClient {
                 .spec(getReqSpec())
                 .body(courier)
                 .when()
+                .log().all()
                 .post(BASE_URL + "/api/v1/courier/");
     }
 
@@ -30,6 +32,7 @@ public class CourierClient extends BaseApiClient {
                 .spec(getReqSpec())
                 .body(courierCredentials)
                 .when()
+                .log().all()
                 .post(BASE_URL + "/api/v1/courier/login");
     }
 
@@ -39,6 +42,7 @@ public class CourierClient extends BaseApiClient {
                 .spec(getReqSpec())
                 .body(courierCredentials)
                 .when()
+                .log().all()
                 .post(BASE_URL + "/api/v1/courier/login")
                 .jsonPath().getInt("id");
     }
@@ -48,6 +52,7 @@ public class CourierClient extends BaseApiClient {
         return given()
                 .spec(getReqSpec())
                 .when()
+                .log().all()
                 .delete(BASE_URL + "/api/v1/courier/" + courierId)
                 .then()
                 .assertThat()

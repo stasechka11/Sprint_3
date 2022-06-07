@@ -26,38 +26,23 @@ public class LoginCourierTest {
         courier = getRandomCourier();
         courierCredentials = new CourierCredentials(courier.getLogin(), courier.getPassword());
         courierClient = new CourierClient();
+        courierClient.createCourier(courier);
     }
 
     @After
     public void clear() {
-        if (courierId != 0) {
             courierId = courierClient.getCourierId(courierCredentials);
             courierClient.deleteCourier(courierId);
-        }
     }
 
     @Test
     @DisplayName("Check login courier api with existing courier")
     public void loginCourierWithCorrectCredentialsTest() {
-        Response responseCreate = courierClient.createCourier(courier);
         Response responseLogin = courierClient.login(courierCredentials);
         //Check response status code
         assertEquals(SC_OK, responseLogin.statusCode());
 
         //Check id is returned
         responseLogin.then().assertThat().body("id", notNullValue());
-    }
-
-    @Test
-    @DisplayName("Check login courier api with not existing courier credentials")
-    public void loginNotExistingCourierTest() {
-        Response responseLogin = courierClient.login(courierCredentials);
-
-        //Check response status code
-        assertEquals(SC_NOT_FOUND, responseLogin.statusCode());
-
-        //Check response body message
-        LoginCourierResponse loginCourierResponse = responseLogin.as(LoginCourierResponse.class);
-        assertEquals(CourierClient.loginCourierNotExistMessage, loginCourierResponse.getMessage());
     }
 }
