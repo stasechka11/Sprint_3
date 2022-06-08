@@ -1,19 +1,16 @@
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.practicum.scooter.api.CourierClient;
-import ru.yandex.practicum.scooter.api.model.Courier;
-import ru.yandex.practicum.scooter.api.model.CourierCredentials;
-import ru.yandex.practicum.scooter.api.model.LoginCourierResponse;
+import ru.yandex.practicum.scooter.api.model.courier.Courier;
+import ru.yandex.practicum.scooter.api.model.courier.CourierCredentials;
 
-import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertEquals;
-import static ru.yandex.practicum.scooter.api.model.Courier.getRandomCourier;
+import static ru.yandex.practicum.scooter.api.model.courier.Courier.getRandomCourier;
 
 public class LoginCourierTest {
     int courierId;

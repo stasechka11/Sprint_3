@@ -4,14 +4,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.practicum.scooter.api.CourierClient;
-import ru.yandex.practicum.scooter.api.model.Courier;
-import ru.yandex.practicum.scooter.api.model.CourierCredentials;
-import ru.yandex.practicum.scooter.api.model.CreateCourierResponse;
+import ru.yandex.practicum.scooter.api.model.courier.Courier;
+import ru.yandex.practicum.scooter.api.model.courier.CourierCredentials;
+import ru.yandex.practicum.scooter.api.model.courier.CreateCourierResponse;
 
 import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static ru.yandex.practicum.scooter.api.model.Courier.getRandomCourier;
+import static ru.yandex.practicum.scooter.api.model.courier.Courier.getRandomCourier;
 
 public class CreateCourierTest {
     int courierId;
@@ -52,7 +52,6 @@ public class CreateCourierTest {
     @Test
     @DisplayName("Check create courier with existing name")
     public void createCourierWithExistingNameTest() {
-        courierClient.createCourier(courier);
         Response responseCreate = courierClient.createCourier(courier);
 
         //Check response status code

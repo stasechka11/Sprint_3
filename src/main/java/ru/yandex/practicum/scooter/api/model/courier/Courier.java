@@ -1,4 +1,4 @@
-package ru.yandex.practicum.scooter.api.model;
+package ru.yandex.practicum.scooter.api.model.courier;
 
 import org.apache.commons.lang3.RandomStringUtils;
 

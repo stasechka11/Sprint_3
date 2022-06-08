@@ -1,4 +1,4 @@
-package ru.yandex.practicum.scooter.api.model;
+package ru.yandex.practicum.scooter.api.model.courier;
 
 public class CourierCredentials {
     public String login;

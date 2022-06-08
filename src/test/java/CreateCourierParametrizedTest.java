@@ -6,14 +6,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ru.yandex.practicum.scooter.api.CourierClient;
-import ru.yandex.practicum.scooter.api.model.Courier;
-import ru.yandex.practicum.scooter.api.model.CreateCourierResponse;
+import ru.yandex.practicum.scooter.api.model.courier.Courier;
+import ru.yandex.practicum.scooter.api.model.courier.CreateCourierResponse;
 
 import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class CreateCourierParametrisedTest {
+public class CreateCourierParametrizedTest {
     Courier courier;
     CourierClient courierClient;
 
@@ -22,7 +22,7 @@ public class CreateCourierParametrisedTest {
         courierClient = new CourierClient();
     }
 
-    public CreateCourierParametrisedTest(Courier courier) {
+    public CreateCourierParametrizedTest(Courier courier) {
         this.courier = courier;
     }
 

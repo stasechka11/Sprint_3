@@ -7,17 +7,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ru.yandex.practicum.scooter.api.CourierClient;
-import ru.yandex.practicum.scooter.api.model.Courier;
-import ru.yandex.practicum.scooter.api.model.CourierCredentials;
-import ru.yandex.practicum.scooter.api.model.LoginCourierResponse;
+import ru.yandex.practicum.scooter.api.model.courier.Courier;
+import ru.yandex.practicum.scooter.api.model.courier.CourierCredentials;
+import ru.yandex.practicum.scooter.api.model.courier.LoginCourierResponse;
 
 import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.junit.Assert.assertEquals;
-import static ru.yandex.practicum.scooter.api.model.Courier.getRandomCourier;
+import static ru.yandex.practicum.scooter.api.model.courier.Courier.getRandomCourier;
 
 @RunWith(Parameterized.class)
-public class LoginCourierParametrisedTest {
+public class LoginCourierParametrizedTest {
     public static Courier courier = getRandomCourier();
     CourierClient courierClient;
     CourierCredentials courierCredentials;
@@ -39,7 +39,7 @@ public class LoginCourierParametrisedTest {
         courierClient.deleteCourier(courierId);
     }
 
-    public LoginCourierParametrisedTest(CourierCredentials courierCredentials, int status_code, String message) {
+    public LoginCourierParametrizedTest(CourierCredentials courierCredentials, int status_code, String message) {
         this.courierCredentials = courierCredentials;
         this.status_code = status_code;
         this.message = message;

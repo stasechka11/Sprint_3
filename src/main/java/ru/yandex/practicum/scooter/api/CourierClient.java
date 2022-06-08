@@ -2,8 +2,8 @@ package ru.yandex.practicum.scooter.api;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import ru.yandex.practicum.scooter.api.model.Courier;
-import ru.yandex.practicum.scooter.api.model.CourierCredentials;
+import ru.yandex.practicum.scooter.api.model.courier.Courier;
+import ru.yandex.practicum.scooter.api.model.courier.CourierCredentials;
 
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
