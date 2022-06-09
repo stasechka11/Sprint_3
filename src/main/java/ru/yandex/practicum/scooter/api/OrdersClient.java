@@ -2,7 +2,11 @@ package ru.yandex.practicum.scooter.api;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import ru.yandex.practicum.scooter.api.model.order.CreateOrderResponse;
+import ru.yandex.practicum.scooter.api.model.order.OrdersList;
 import ru.yandex.practicum.scooter.api.model.order.Order;
+
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
@@ -18,6 +22,29 @@ public class OrdersClient extends BaseApiClient {
                 .when()
                 .log().all()
                 .post(BASE_URL + BASE_PATH_ORDERS);
+    }
+
+    @Step("Get orders list")
+    public List<OrdersList> getOrdersList(){
+        return
+                given()
+                        .spec(getReqSpec())
+                        .when()
+                        .log().all()
+                        .get(BASE_URL + BASE_PATH_ORDERS)
+                        .then()
+                        .assertThat()
+                        .statusCode(SC_OK)
+                        .extract()
+                        .body()
+                        .jsonPath()
+                        .getList("orders", OrdersList.class);
+    }
+
+    @Step("Get order track")
+    public int getOrderTrack(Response response){
+        CreateOrderResponse createOrderResponse = response.as(CreateOrderResponse.class);
+        return createOrderResponse.getTrack();
     }
 
     //Seems that cancel order api doesn't work. The response code is always 404 even for existing orders.

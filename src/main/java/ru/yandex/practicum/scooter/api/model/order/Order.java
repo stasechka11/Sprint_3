@@ -43,6 +43,21 @@ public class Order {
         return new Order(firstName, lastName, address, metroStation, phone, rentTime, deliveryDate, comment, colorList);
     }
 
+    public static Order getRandomOrder(){
+        String firstName = RandomStringUtils.randomAlphabetic(10);
+        String lastName = RandomStringUtils.randomAlphabetic(10);
+        String address = RandomStringUtils.randomAlphabetic(10);
+        String metroStation = RandomStringUtils.randomAlphabetic(10);
+        String phone = RandomStringUtils.randomAlphabetic(10);
+        int rentTime = RandomUtils.nextInt(1, 30);
+        String comment = RandomStringUtils.randomAlphabetic(10);
+        String deliveryDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        List<String> colorList = List.of("BLACK", "GREY");
+
+        return new Order(firstName, lastName, address, metroStation, phone, rentTime, deliveryDate, comment, colorList);
+    }
+
+
     @Override
     public String toString() {
         return "color=" + color;
