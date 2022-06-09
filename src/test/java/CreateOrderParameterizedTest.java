@@ -14,6 +14,7 @@ import java.util.List;
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static ru.yandex.practicum.scooter.api.model.order.Order.*;
 
 @RunWith(Parameterized.class)
@@ -54,8 +55,9 @@ public class CreateOrderParameterizedTest {
         //Check response status code
         assertEquals(SC_CREATED, responseCreate.statusCode());
 
-        CreateOrderResponse createOrderResponse = responseCreate.as(CreateOrderResponse.class);
-        orderTrack = createOrderResponse.getTrack();
-        responseCreate.then().assertThat().body("track", notNullValue());
+        //Check response body
+        orderTrack = ordersClient.getOrderTrack(responseCreate);
+        assertNotEquals(0, orderTrack);
+
     }
 }
