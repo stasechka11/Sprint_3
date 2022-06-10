@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.practicum.scooter.api.OrdersClient;
 import ru.yandex.practicum.scooter.api.model.order.Order;
-import ru.yandex.practicum.scooter.api.model.order.OrdersList;
+import ru.yandex.practicum.scooter.api.model.order.OrderInfo;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class GetOrdersListTest {
     @Test
     @DisplayName("Check orders list is displayed")
     public void getOrderListTest() {
-        List<OrdersList> ordersList = ordersClient.getOrdersList();
+        List<OrderInfo> ordersList = ordersClient.getOrdersList();
         assertFalse(ordersList.isEmpty());
     }
 }

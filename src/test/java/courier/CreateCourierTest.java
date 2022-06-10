@@ -8,7 +8,7 @@ import org.junit.Test;
 import ru.yandex.practicum.scooter.api.CourierClient;
 import ru.yandex.practicum.scooter.api.model.courier.Courier;
 import ru.yandex.practicum.scooter.api.model.courier.CourierCredentials;
-import ru.yandex.practicum.scooter.api.model.courier.CreateCourierResponse;
+import ru.yandex.practicum.scooter.api.model.GeneralApiResponse;
 
 import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.assertEquals;
@@ -31,7 +31,7 @@ public class CreateCourierTest {
     @After
     public void clear() {
         courierId = courierClient.getCourierId(courierCredentials);
-        courierClient.deleteCourier(courierId);
+        courierClient.deleteCourierAfterTest(courierId);
     }
 
     @Test
@@ -42,9 +42,9 @@ public class CreateCourierTest {
         //Check response status code
         assertEquals(SC_CREATED, responseCreate.statusCode());
 
-        CreateCourierResponse createCourierResponse = responseCreate.as(CreateCourierResponse.class);
+        GeneralApiResponse courierResponse = responseCreate.as(GeneralApiResponse.class);
         //Check response body
-        assertTrue(createCourierResponse.getOk());
+        assertTrue(courierResponse.getOk());
 
         //Check login with created courier
         Response responseLogin = courierClient.login(courierCredentials);
@@ -54,13 +54,14 @@ public class CreateCourierTest {
     @Test
     @DisplayName("Check create courier with existing name")
     public void createCourierWithExistingNameTest() {
+        courierClient.createCourier(courier);
         Response responseCreate = courierClient.createCourier(courier);
 
         //Check response status code
         assertEquals(SC_CONFLICT, responseCreate.statusCode());
 
         //Check response body
-        CreateCourierResponse createCourierResponse = responseCreate.as(CreateCourierResponse.class);
-        assertEquals(CourierClient.COURIER_EXIST_MESSAGE, createCourierResponse.getMessage());
+        GeneralApiResponse courierResponse = responseCreate.as(GeneralApiResponse.class);
+        assertEquals(CourierClient.COURIER_EXIST_MESSAGE, courierResponse.getMessage());
     }
 }

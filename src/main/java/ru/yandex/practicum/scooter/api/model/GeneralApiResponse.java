@@ -1,10 +1,10 @@
-package ru.yandex.practicum.scooter.api.model.courier;
+package ru.yandex.practicum.scooter.api.model;
 
-public class CreateCourierResponse {
+public class GeneralApiResponse {
     private Boolean ok;
     private String message;
 
-    public CreateCourierResponse(Boolean ok, String message) {
+    public GeneralApiResponse(Boolean ok, String message) {
         this.ok = ok;
         this.message = message;
     }

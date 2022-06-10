@@ -9,7 +9,7 @@ import io.restassured.specification.RequestSpecification;
 public class BaseApiClient {
     public static final String BASE_URL = "https://qa-scooter.praktikum-services.ru";
 
-    public RequestSpecification getReqSpec() {
+    public static RequestSpecification getReqSpec() {
         return new RequestSpecBuilder().log(LogDetail.ALL)
                 .addFilter(new AllureRestAssured())
                 .setContentType(ContentType.JSON).build();

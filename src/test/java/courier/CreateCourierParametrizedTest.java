@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ru.yandex.practicum.scooter.api.CourierClient;
 import ru.yandex.practicum.scooter.api.model.courier.Courier;
-import ru.yandex.practicum.scooter.api.model.courier.CreateCourierResponse;
+import ru.yandex.practicum.scooter.api.model.GeneralApiResponse;
 
 import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
 import static org.junit.Assert.assertEquals;
@@ -46,7 +46,7 @@ public class CreateCourierParametrizedTest {
         assertEquals(SC_BAD_REQUEST, responseCreate.statusCode());
 
         //Check response body
-        CreateCourierResponse createCourierResponse = responseCreate.as(CreateCourierResponse.class);
-        assertEquals(CourierClient.CREATE_COURIER_NOT_ENOUGH_DATA_MESSAGE, createCourierResponse.getMessage());
+        GeneralApiResponse courierResponse = responseCreate.as(GeneralApiResponse.class);
+        assertEquals(CourierClient.CREATE_COURIER_NOT_ENOUGH_DATA_MESSAGE, courierResponse.getMessage());
     }
 }

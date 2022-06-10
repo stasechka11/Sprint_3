@@ -16,6 +16,9 @@ public class CourierClient extends BaseApiClient {
     //login courier messages
     public static final String LOGIN_COURIER_NOT_EXIST_MESSAGE = "Учетная запись не найдена";
     public static final String LOGIN_COURIER_NOT_ENOUGH_DATA_MESSAGE = "Недостаточно данных для входа";
+    //delete courier messages
+    public static final String DELETE_COURIER_NOT_FOUND_MESSAGE = "Курьера с таким id нет";
+    public static final String DELETE_COURIER_NOT_ENOUGH_DATA_MESSAGE = "Недостаточно данных для удаления курьера";
 
     @Step("Create courier {courier}")
     public Response createCourier(Courier courier) {
@@ -48,18 +51,24 @@ public class CourierClient extends BaseApiClient {
                 .jsonPath().getInt("id");
     }
 
-    @Step("Delete courier with id - {courierId}")
-    public Boolean deleteCourier(int courierId) {
-        return given()
+    @Step("Delete courier after test with id - {courierId}")
+    public void deleteCourierAfterTest(int courierId) {
+        given()
                 .spec(getReqSpec())
                 .when()
                 .log().all()
                 .delete(BASE_URL + BASE_PATH_COURIER + courierId)
                 .then()
                 .assertThat()
-                .statusCode(SC_OK)
-                .extract()
-                .path("ok");
+                .statusCode(SC_OK);
     }
 
+    @Step("Delete courier with id - {courierId}")
+    public Response deleteCourier(int courierId) {
+        return given()
+                .spec(getReqSpec())
+                .when()
+                .log().all()
+                .delete(BASE_URL + BASE_PATH_COURIER + courierId);
+    }
 }

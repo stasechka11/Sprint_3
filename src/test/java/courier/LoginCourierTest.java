@@ -31,7 +31,7 @@ public class LoginCourierTest {
     @After
     public void clear() {
             courierId = courierClient.getCourierId(courierCredentials);
-            courierClient.deleteCourier(courierId);
+            courierClient.deleteCourierAfterTest(courierId);
     }
 
     @Test

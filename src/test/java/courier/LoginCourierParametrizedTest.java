@@ -38,7 +38,7 @@ public class LoginCourierParametrizedTest {
     @After
     public void clear() {
         courierId = courierClient.getCourierId(existingCourierCredentials);
-        courierClient.deleteCourier(courierId);
+        courierClient.deleteCourierAfterTest(courierId);
     }
 
     public LoginCourierParametrizedTest(CourierCredentials courierCredentials, int status_code, String message) {
