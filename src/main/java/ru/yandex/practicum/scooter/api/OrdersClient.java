@@ -16,6 +16,8 @@ public class OrdersClient extends BaseApiClient {
 
     // accept order messages
     public static final String ACCEPT_ORDER_NOT_ENOUGH_DATA_MESSAGE = "Недостаточно данных для поиска";
+    public static final String ACCEPT_ORDER_ORDER_ID_NOT_FOUND = "Заказа с таким id не существует";
+    public static final String ACCEPT_ORDER_COURIER_ID_NOT_FOUND = "Курьера с таким id не существует";
 
     @Step("Create order {order}")
     public Response createOrder(Order order) {
