@@ -51,8 +51,8 @@ public class CreateCourierTest {
         assertEquals(SC_OK, responseLogin.statusCode());
     }
 
-    @Test
-    @DisplayName("Check create courier with existing name")
+   // @Test
+    //@DisplayName("Check create courier with existing name")
     public void createCourierWithExistingNameTest() {
         courierClient.createCourier(courier);
         Response responseCreate = courierClient.createCourier(courier);

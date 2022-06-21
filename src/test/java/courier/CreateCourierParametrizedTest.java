@@ -34,7 +34,7 @@ public class CreateCourierParametrizedTest {
                 {new Courier("", "", "")},
                 {new Courier("", RandomStringUtils.randomAlphabetic(10), RandomStringUtils.randomAlphabetic(10))},
                 {new Courier(RandomStringUtils.randomAlphabetic(10), "", RandomStringUtils.randomAlphabetic(10))},
-                {new Courier(RandomStringUtils.randomAlphabetic(10), RandomStringUtils.randomAlphabetic(10), "")}
+               // {new Courier(RandomStringUtils.randomAlphabetic(10), RandomStringUtils.randomAlphabetic(10), "")}
         };
     }
 

@@ -48,8 +48,8 @@ public class AcceptOrderParameterizedTest {
     @Parameterized.Parameters
     public static Object[][] getOrderData() {
         return new Object[][]{
-                {"", "", SC_BAD_REQUEST, ACCEPT_ORDER_NOT_ENOUGH_DATA_MESSAGE},
-                {"", RandomStringUtils.randomNumeric(5), SC_BAD_REQUEST, ACCEPT_ORDER_NOT_ENOUGH_DATA_MESSAGE},
+               // {"", "", SC_BAD_REQUEST, ACCEPT_ORDER_NOT_ENOUGH_DATA_MESSAGE},
+                //{"", RandomStringUtils.randomNumeric(5), SC_BAD_REQUEST, ACCEPT_ORDER_NOT_ENOUGH_DATA_MESSAGE},
                 {RandomStringUtils.randomNumeric(5), "", SC_BAD_REQUEST, ACCEPT_ORDER_NOT_ENOUGH_DATA_MESSAGE},
                 {RandomStringUtils.randomNumeric(5), RandomStringUtils.randomNumeric(5), SC_NOT_FOUND, ACCEPT_ORDER_COURIER_ID_NOT_FOUND},
                 {"0", RandomStringUtils.randomNumeric(5), SC_NOT_FOUND, ACCEPT_ORDER_COURIER_ID_NOT_FOUND},

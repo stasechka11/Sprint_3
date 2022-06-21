@@ -26,7 +26,7 @@ public class GetOrderInfoTest {
 
     @After
     public void clear(){
-        ordersClient.cancelOrder(orderTrack);
+        //ordersClient.cancelOrder(orderTrack);
     }
 
     @Test

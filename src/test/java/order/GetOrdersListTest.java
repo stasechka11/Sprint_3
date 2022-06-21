@@ -29,7 +29,7 @@ public class GetOrdersListTest {
 
     @After
     public void clear() {
-        ordersClient.cancelOrder(orderTrack);
+        //ordersClient.cancelOrder(orderTrack);
     }
 
     @Test

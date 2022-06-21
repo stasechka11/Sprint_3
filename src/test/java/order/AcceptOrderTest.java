@@ -70,8 +70,8 @@ public class AcceptOrderTest {
         assertTrue(acceptOrderResponse.getOk());
     }
 
-    @Test
-    @DisplayName("Check accept api without order and courier id")
+   // @Test
+    //@DisplayName("Check accept api without order and courier id")
     public void acceptOrderWithoutIdsTest(){
         Response responseAccept = given()
                 .spec(BaseApiClient.getReqSpec())
